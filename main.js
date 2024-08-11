@@ -272,8 +272,8 @@ function addGrid(textureForState0, textureForState1) {
 function removeGrid(index) {
     grids[index].cubes.forEach(cube => scene.remove(cube));
     grids.splice(index, 1);
-    updateGridSelector();
     selectedGridIndex = -1;
+    updateGridSelector();
     updateControls();
     applyBinaryData();
 }
