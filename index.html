@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebGL testy</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+        }
+
+        canvas {
+            display: block;
+        }
+
+        .controls {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 100;
+        }
+
+        .controls div {
+            background: #676d6952;
+            padding: 10px;
+            margin-bottom: 10px;
+            color: white;
+        }
+        input[type=number] {
+            width: 100px;
+        }
+
+        .controls div h3 {
+            margin: 0;
+        }
+
+        #binaryData {
+            text-align: right;
+        }
+    </style>
+    <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.150.1/build/three.module.js",
+        "three/examples/jsm/controls/OrbitControls.js": "https://cdn.jsdelivr.net/npm/three@0.150.1/examples/jsm/controls/OrbitControls.js"
+      }
+    }
+  </script>
+</head>
+
+<body>
+    <div class="controls">
+        <div>
+            <h3>Grids managment</h3>
+            <button id="addGrid">Add Grid</button>
+            <button id="removeGrid">Remove Grid</button>
+            <select id="gridSelector"></select>
+        </div>
+        <div>
+            <h3>Grid information</h3>
+            <label for="xCount">X Count: </label>
+            <input type="number" id="xCount" value="5">
+            <br>
+            <label for="yCount">Y Count: </label>
+            <input type="number" id="yCount" value="5">
+            <br>
+            <label for="zCount">Z Count: </label>
+            <input type="number" id="zCount" value="5">
+            <br>
+            <label for="xDistance">X Distance: </label>
+            <input type="number" id="xDistance" value="5">
+            <br>
+            <label for="yDistance">Y Distance: </label>
+            <input type="number" id="yDistance" value="5">
+            <br>
+            <label for="zDistance">Z Distance: </label>
+            <input type="number" id="zDistance" value="5">
+            <br>
+            <label for="xTilt">X Tilt: </label>
+            <input type="number" id="xTilt" value="0">
+            <br>
+            <label for="zTilt">Z Tilt: </label>
+            <input type="number" id="zTilt" value="0">
+            <br>
+            <label for="gridPosX">Grid X Position: </label>
+            <input type="number" id="gridPosX" value="0">
+            <br>
+            <label for="gridPosY">Grid Y Position: </label>
+            <input type="number" id="gridPosY" value="0">
+            <br>
+            <label for="gridPosZ">Grid Z Position: </label>
+            <input type="number" id="gridPosZ" value="0">
+            <br>
+            <button id="flipX">Flip X</button>
+            <button id="flipY">Flip Y</button>
+            <button id="flipZ">Flip Z</button>
+            <br>
+            <label for="loopOrder">Loop order: </label>
+            <select id="loopOrder">
+                <option value="x,y,z">X, Y, Z</option>
+                <option value="x,z,y">X, Z, Y</option>
+                <option value="y,x,z">Y, X, Z</option>
+                <option value="y,z,x">Y, Z, X</option>
+                <option value="z,x,y">Z, X, Y</option>
+                <option value="z,y,x">Z, Y, X</option>
+            </select>
+        </div>
+        <div>
+            <h3>Binary Data</h3>
+            <textarea id="binaryData" placeholder="0101"></textarea>
+        <!--
+            <br>
+            <label for="texture0">Texture for 0:</label>
+            <select id="texture0">
+                <option selected="selected" value="redstone_block">Redstone Block</option>
+                <option value="gold_block">Gold Block</option>
+                <option value="barrel">Barrel</option>
+                <option value="lapis_block">Lapis</option>
+                <option value="glass">Glass</option>
+            </select>
+            <br>
+            <label for="texture1">Texture for 1:</label>
+            <select id="texture1">
+                <option value="redstone_block">Redstone Block</option>
+                <option selected="selected" value="gold_block">Gold Block</option>
+                <option value="barrel">Barrel</option>
+                <option value="lapis_block">Lapis</option>
+                <option value="glass">Glass</option>
+            </select>
+        -->
+        </div>
+        <div>
+            <h3>Player position</h3>
+            <label for="glassX">Player X Position: </label>
+            <input type="number" id="glassX" value="0">
+            <br>
+            <label for="glassY">Player Y Position: </label>
+            <input type="number" id="glassY" value="0">
+            <br>
+            <label for="glassZ">Player Z Position: </label>
+            <input type="number" id="glassZ" value="0">
+        </div>
+        <div>
+            <h3>Profile</h3>
+            <button id="exportJson">Export JSON</button><br>
+            <input type="file" id="importJson" accept=".json">
+        </div>
+        <script type="module" src="main.js"></script>
+    </div>
+</body>
+
+</html>
